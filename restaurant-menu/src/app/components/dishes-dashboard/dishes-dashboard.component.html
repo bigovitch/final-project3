@@ -1,0 +1,102 @@
+<nav class="navbar navbar-light bg-primary">
+  <div class="container-fluid">
+      <h1 style="color: aliceblue;" class="navbar-brand">Dish Management</h1>
+      <div class="d-flex">
+
+          <button type="button" id="add-btn" class="btn btn-success"(click)="openModal()" >Add Dish</button>
+      </div>
+  </div>
+</nav>
+
+<table class="table table-responsive mt-3">
+  <thead>
+      <tr>
+          <th scope="col">Dish Id</th>
+          <th scope="col">Title</th>
+          <th scope="col">Price</th>
+          <th scope="col">Description</th>
+          <th scope="col">Calories</th>
+        
+          <th scope="col">Action</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let row of foodList">
+
+          <td>{{row.id}}</td>
+          <td>{{row.title}}</td>
+          <td>{{row.price}}</td>
+          <td>{{row.description}}</td>
+          <td>{{row.calories}}</td>
+         
+          <td>
+              <button style="color: #fff;" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-info" (click)="onEdit(row)">Edit</button>
+              <button style="color: #fff;" class="btn btn-danger mx-3" (click)="deleteDish(row)">Skip The Dish</button>
+          </td>
+      </tr>
+
+  </tbody>
+</table>
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title">Add Dish</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form [formGroup]="formValue">
+                  <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Title</label>
+                      <input type="text" formControlName="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Price</label>
+                      <input type="text" formControlName="price" class="form-control" id="exampleInputPassword1">
+                  </div>
+                  <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Description</label>
+                      <input type="text" formControlName="description" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Calories</label>
+                      <input type="text" formControlName="calories" class="form-control" id="exampleInputPassword1">
+                  </div>
+                  
+              </form>
+          </div>
+          <div class="modal-footer">
+              <button id="close" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" *ngIf="showAdd" (click)="postDish()" class="btn btn-primary">Add</button>
+              <button type="button" *ngIf="showUpdate" (click)="editDish()" class="btn btn-primary">Update</button>
+          </div>
+      </div>
+  </div>
+</div> -->
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" style="z-index: 100000;" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<p-dialog header="Title" [(visible)]="display">
+Abc 
+</p-dialog>

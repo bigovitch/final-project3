@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+<h1>Create Account</h1>
+<h3>Sign Up to get started!</h3>
+
+<ion-content>
+  <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
+
+    <ion-item lines="full">
+      <ion-label position="floating">First Name</ion-label>
+      <ion-input formControlName="first_name" type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Last Name</ion-label>
+      <ion-input formControlName="last_name" type="email" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Email ID</ion-label>
+      <ion-input formControlName="email" type="email" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input formControlName="password" type="password" required></ion-input>
+    </ion-item>
+
+    <ion-row class="mt-5">
+      <ion-col>
+        <ion-button type="submit" color="danger" expand="block">Submit</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
+
+
+<!-- <form [formGroup]="registerForm">
+  <app-input label="First Name"  formControlName="first_name"></app-input>
+  <app-input label="Last Name"  formControlName="last_name"></app-input>
+
+  <app-input label="Email ID" formControlName="email"></app-input>
+
+  <app-input label="password" type="password" formControlName="password"></app-input>
+
+  <app-loginbut (click)="register()" label="Register"></app-loginbut>
+
+</form> -->
+
+<p class="footer-text">i'm already a member<a routerLink="/login"> Sign in</a></p>
+</ion-content>
