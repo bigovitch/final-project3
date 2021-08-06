@@ -1,9 +1,47 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>cart</ion-title>
+    <ion-title> My cart</ion-title>
+    
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+  <ng-container *ngIf="cartItemList.length !==0">
+    <ion-card *ngFor="let row of cartItemList">
+      <img style="width: 50%;margin: auto;position: relative;
+      left: 21%;" src="assets/images/foods/{{row.image}}" alt="food image" />
+      <ion-card-header>
+        <!-- <ion-card-subtitle>Destination</ion-card-subtitle> -->
+        <ion-card-title>{{row.title}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+       {{row.description}}
+      </ion-card-content>
+      <h2 class="sub-title"><sup>$</sup>{{ row.price }}</h2>
+      <div class="text-center">
+      
+      <ion-button (click)="removeItem(row.id)"color="danger">Remove</ion-button>
+    </div>
+    </ion-card>
+  </ng-container>
+  <ng-container *ngIf="cartItemList.length === 0">
+  <div class="center">
+    <img src="" alt="">
+    <h4>Your Cart is Empty!</h4>
+    <button class="btn btn-primary" routerLink="/home/listing"> Shop Now </button>
+
+  </div>
+</ng-container>
 </ion-content>
+
+<!-- <ion-menu contentId="menu-content" menuId="menu-content" side="start" type="overlay">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title> menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    Awesome avocado content
+  </ion-content>
+</ion-menu> -->

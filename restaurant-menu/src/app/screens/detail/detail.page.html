@@ -1,32 +1,41 @@
-
 <ion-content>
   <div class="header">
-    <ion-buttons >
+    <ion-buttons>
       <ion-button routerLink="/home/listing">
-      <ion-icon slot="icon-only" color='dark' name="arrow-back"></ion-icon>
-    </ion-button>
+        <ion-icon slot="icon-only" color='dark' name="arrow-back"></ion-icon>
+      </ion-button>
     </ion-buttons>
-    
-  </div> 
 
-  <!--food detail card--> 
-   <div class="card">
+  </div>
+
+  <!--food detail card-->
+  <div *ngIf="food" class="card">
     <div class="image">
       <ion-img [src]="'assets/images/foods/' + food.image"></ion-img>
 
     </div>
-<div class="card-content">
-  <div class="card-title">
-    <h1 class="ion-no-margin">{{food.title}}</h1>
-<p class="ion-no-margin"><sup>$</sup>{{ food.price}}</p>
-  </div>
-</div>
-<div class="Ingredients">
-  <h3>Ingredients:</h3>
-  <p>{{food.description}}</p>
-  </div>
-  <app-button (click)="addItemToCart()"> Add to Cart</app-button>
-  </div>
-  
+    <div class="card-content">
+      <div class="card-title">
+        <h1 class="ion-no-margin">{{food?.title}}</h1>
+        <p class="ion-no-margin"><sup>$</sup>{{ food?.price}}</p>
+      </div>
+    </div>
+    <div class="Ingredients">
+      <h3>Ingredients:</h3>
+      <p>{{food?.description}}</p>
+    </div>
 
-</ion-content> 
+
+    <div class="header d-flex justify-content-between d-inline-block">
+
+      <button style="width: 6rem;
+      height: 3rem;
+      margin-top: 26px;
+      margin-right: 20px;"  (click)="addItemToCart()" class="btn btn-primary">Add to Cart</button>
+    </div>
+
+    <!-- <app-button (click)="addItemToCart()"> Add to Cart</app-button> -->
+  </div>
+
+
+</ion-content>

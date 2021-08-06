@@ -8,7 +8,6 @@ import { ListingPageRoutingModule } from './listing-routing.module';
 
 import { ListingPage } from './listing.page';
 import { SearchbarModule } from 'src/app/components/searchbar/searchbar.module';
-import { LoginButtonModule } from 'src/app/components/login-button/login-button.module';
 import { CategoryItemModule } from 'src/app/components/category-item/category-item.module';
 import {  FoodCardModule } from 'src/app/components/food-card/food-card.module';
 import { DishesDashboardModule } from 'src/app/components/dishes-dashboard/dishes-dashboard.module';
@@ -21,7 +20,6 @@ import { DishesDashboardModule } from 'src/app/components/dishes-dashboard/dishe
     IonicModule,
     ListingPageRoutingModule,
     SearchbarModule,
-    LoginButtonModule,
     CategoryItemModule,
     FoodCardModule,
     DishesDashboardModule,

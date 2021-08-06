@@ -6,6 +6,7 @@ const User = require('./models/users');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
+const cart = require('./models/cart');
 const dishes = require('./models/dishes');
 const cors = require ('cors');
 
@@ -106,7 +107,45 @@ app.post('/addDish', function (req, res) {
         res.status(400).send(err);
     });
 });
+app.get('/allItems' , function(req , res) {
+    cart.findAll().then(function(result){
+        res.send(result)
+    }).catch(function(err){
+        res.status(400).send(err);
+    });
+});
 
+app.post('/addToCart', function (req, res) {
+    let data = {
+        title: req.body.title,
+        price: req.body.price,
+        description: req.body.description,
+        image:req.body.image
+        
+    };
+    cart.create(data).then(function (result) {
+        res.status(200).send(result)
+
+    }).catch(function (err) {
+        res.status(400).send(err);
+    });
+});
+app.delete("/itemCart/delete/id/:id", (req, res) => {
+    cart.findByPk(req.params.id).then((result) => {
+        // result.title = req.body.title;
+        // result.price = req.body.price;
+        // result.description = req.body.description;
+        // result.calories = req.body.calories;
+
+        result.destroy().then(() => {
+            res.send(result);
+        }).catch(() => {
+            res.status(500).send("Could not delete dish");
+        });
+    }).catch(() => {
+        res.status(500).send("Could not delete dish");
+    });
+});
 // app.put('/id/:id', function (req, res) {
 //     let id = req.params.id;
 //     // find the dish that corresponds to the id on the url
