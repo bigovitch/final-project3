@@ -49,10 +49,13 @@ food:any;
       description : this.food.description,
       image : this.food.image
     }
-    this.router.navigate(['cart'],{state:item})
+    
     this.cartService.addToCart(item)
     .subscribe(res=>{
       console.log(res)
+      this.router.navigate(['cart']);
+      
+      
     })
   }
 

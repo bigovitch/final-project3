@@ -25,7 +25,7 @@ const dishes = config.define('dishes' , {
         },
     image:{
         type:Sequelize.STRING,
-        allowNull:false,
+        allowNull:true,
             },
 },{timestamps:false});
 

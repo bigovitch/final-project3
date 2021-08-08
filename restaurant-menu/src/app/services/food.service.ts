@@ -27,7 +27,7 @@ postDish(data:any){
   }))
 }
 updateDish(data:any , id:number){
-return this.http.put<any>("http://localhost:5000/dishes/update/id" +id,data)
+return this.http.put<any>("http://localhost:5000/dishes/update/id/" +id,data)
 .pipe(map((res:any)=>{
   return res;
 }))

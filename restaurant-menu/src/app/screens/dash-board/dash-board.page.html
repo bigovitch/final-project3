@@ -1,9 +1,68 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>DashBoard</ion-title>
+      <div class="d-flex justify-content-between">
+          <div>
+              <ion-title>DashBoard</ion-title>
+          </div>
+          <div>
+              <ion-button (click)="display = true" color="success">Add Dish</ion-button>
+
+          </div>
+      </div>
+
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <app-dishes-dashboard></app-dishes-dashboard>
+  <ng-container>
+    <ion-card *ngFor="let row of foodList">
+      <ion-card-header>
+        <ion-card-title>{{row.title}}</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+       <ion-img style="width:50%" src="/assets/images/foods/{{row.image}}"></ion-img> 
+      {{row.description}}<br>
+      <strong><sup>$</sup>{{row.price}}</strong>
+      
+      </ion-card-content>
+      <div style="margin-left: 100px;" >
+        <ion-button (click)="onEdit(row)"color="primary">Edit</ion-button>
+        <ion-button (click)="deleteDish(row)" color="danger">Delete</ion-button>
+  
+      </div>
+    </ion-card>
+  </ng-container>
+  
+ 
 </ion-content>
+
+<p-dialog [(visible)]="display">
+  <ng-template pTemplate="header">
+      <h2> Add Dish</h2>
+  </ng-template>
+  <form [formGroup]="formValue">
+      <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Title</label>
+          <input type="text" formControlName="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Price</label>
+          <input type="text" formControlName="price" class="form-control" id="exampleInputPassword1">
+      </div>
+      <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Description</label>
+          <input type="text" formControlName="description" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Calories</label>
+          <input type="text" formControlName="calories" class="form-control" id="exampleInputPassword1">
+      </div>
+
+  </form>
+  <p-footer>
+      <ion-button color="primary" (click)="addDish()">Add</ion-button>
+      <ion-button color="danger" (click)="updateDish()">Update</ion-button>
+  </p-footer>
+</p-dialog>

@@ -8,6 +8,8 @@ import { DashBoardPageRoutingModule } from './dash-board-routing.module';
 
 import { DashBoardPage } from './dash-board.page';
 import { DishesDashboardModule } from 'src/app/components/dishes-dashboard/dishes-dashboard.module';
+import {DialogModule} from 'primeng/dialog';
+import {ButtonModule} from 'primeng/button';
 
 @NgModule({
   imports: [
@@ -16,7 +18,10 @@ import { DishesDashboardModule } from 'src/app/components/dishes-dashboard/dishe
     IonicModule,
     DashBoardPageRoutingModule,
     DishesDashboardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DialogModule,
+    ButtonModule
+
   ],
   declarations: [DashBoardPage]
 })

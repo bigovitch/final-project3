@@ -3,6 +3,15 @@
     <ion-title> My cart</ion-title>
     
   </ion-toolbar>
+
+    <div class="header">
+      <ion-buttons>
+        <ion-button routerLink="/detail/id">
+          <ion-icon slot="icon-only" color='dark' name="arrow-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+  
+    </div>
 </ion-header>
 
 <ion-content>
@@ -22,8 +31,14 @@
       <div class="text-center">
       
       <ion-button (click)="removeItem(row.id)"color="danger">Remove</ion-button>
+
     </div>
     </ion-card>
+    <h4 class="text-center">Grand Total :${{total}}</h4>
+  </ng-container>
+  <ng-container>
+    <ion-button *ngIf="cartItemList.length > 0" (click)="checkOut()" color="primary">Check Out</ion-button>
+
   </ng-container>
   <ng-container *ngIf="cartItemList.length === 0">
   <div class="center">

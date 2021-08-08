@@ -5,7 +5,7 @@ const config = require('./config');
 const User = require('./models/users');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-
+const checkout = require('./models/checkout')
 const cart = require('./models/cart');
 const dishes = require('./models/dishes');
 const cors = require ('cors');
@@ -197,7 +197,35 @@ app.delete("/dishes/delete/id/:id", (req, res) => {
         res.status(500).send("Could not delete dish");
     });
 });
+app.post('/checkout', function (req, res) {
+    let data = {
+        title: req.body.title,
+        price: req.body.price,
+        quantity: req.body.quantity,
+        total: req.body.total,
+        description: req.body.description,
+        image:req.body.image,
+        name:req.body.name,
+        email:req.body.email,
+        address:req.body.address,
+        city:req.body.city
+        
 
+    };
+    checkout.create(data).then(function (result) {
+        res.status(200).send(result)
+
+    }).catch(function (err) {
+        res.status(400).send(err);
+    });
+});
+app.get('/checkout/orders' , function(req , res) {
+    checkout.findAll().then(function(result){
+        res.send(result)
+    }).catch(function(err){
+        res.status(400).send(err);
+    });
+});
 
 const PORT = process.env.PORT || 5000;
 

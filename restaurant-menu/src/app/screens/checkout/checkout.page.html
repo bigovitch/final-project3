@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>checkout</ion-title>
+  </ion-toolbar>
+  
+    <div class="header">
+      <ion-buttons>
+        <ion-button routerLink="/cart">
+          <ion-icon slot="icon-only" color='dark' name="arrow-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+  
+    </div>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="userForm" class="row g-3">
+    <div class="col-md-6">
+      <label for="inputEmail4" class="form-label">Email</label>
+      <input type="email" class="form-control" formControlName="email" id="inputEmail4">
+    </div>
+    <div class="col-md-6">
+      <label for="inputPassword4" class="form-label">Full Name</label>
+      <input type="text" class="form-control"formControlName="fullName" id="inputPassword4">
+    </div>
+    <div class="col-12">
+      <label for="inputAddress" class="form-label">Address</label>
+      <input type="text" class="form-control" formControlName="address"id="inputAddress" placeholder="1234 Main St">
+    </div>
+    
+    <div class="col-md-6">
+      <label for="inputCity" class="form-label">City</label>
+      <input type="text" class="form-control" formControlName="city" id="inputCity">
+    </div>
+    <div class="col-md-4">
+      <!-- <label for="inputState" class="form-label">Quantity</label>
+      <select id="inputState" class="form-select">
+        <option selected>Choose...</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+
+      </select> -->
+    </div>
+  </form>
+  
+    <ion-card *ngFor="let row of cartItemList">
+      <img style="width: 50%;margin: auto;position: relative;
+      left: 21%;" src="assets/images/foods/{{row.image}}" alt="food image" />
+      <ion-card-header>
+        <!-- <ion-card-subtitle>Destination</ion-card-subtitle> -->
+        <ion-card-title>{{row.title}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+       {{row.description}}
+      </ion-card-content>
+      <h2 class="sub-title"><sup>$</sup>{{ row.price }}</h2>
+      <div class="text-center">
+      
+      <ion-button (click)="removeItem(row.id)"color="danger">Remove</ion-button>
+
+    </div>
+    
+  </ion-card>
+  <h4>Grand total :${{total}}</h4>
+  <ion-button (click)="placeOrder()" class="primary">Place Order</ion-button>
+</ion-content>

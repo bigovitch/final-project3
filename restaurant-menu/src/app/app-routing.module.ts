@@ -72,6 +72,10 @@ const routes: Routes = [
     path: 'register',
     loadChildren: () => import('./screens/register/register.module').then( m => m.RegisterPageModule)
   },
+  {
+    path: 'checkout',
+    loadChildren: () => import('./screens/checkout/checkout.module').then( m => m.CheckoutPageModule)
+  },
  
 ];
 

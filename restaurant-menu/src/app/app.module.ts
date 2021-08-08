@@ -13,12 +13,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
 import { RegisterPageModule } from './screens/register/register.module';
+import { HomePageModule } from './home/home.module';
 
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, NgbModule , AuthModule,HttpClientModule , ReactiveFormsModule , FormsModule, BrowserAnimationsModule, MatInputModule ,RegisterPageModule ],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, NgbModule ,HomePageModule, AuthModule,HttpClientModule , ReactiveFormsModule , FormsModule, BrowserAnimationsModule, MatInputModule ,RegisterPageModule ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
