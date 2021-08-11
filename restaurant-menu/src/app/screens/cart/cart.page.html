@@ -1,53 +1,56 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title> My cart</ion-title>
-    
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title> My cart</ion-title>
+
+    </ion-toolbar>
 
     <div class="header">
-      <ion-buttons>
-        <ion-button routerLink="/detail/id">
-          <ion-icon slot="icon-only" color='dark' name="arrow-back"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-  
+        <ion-buttons>
+            <ion-button routerLink="/detail/id">
+                <ion-icon slot="icon-only" color='dark' name="arrow-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+
     </div>
 </ion-header>
 
 <ion-content>
 
-  <ng-container *ngIf="cartItemList.length !==0">
-    <ion-card *ngFor="let row of cartItemList">
-      <img style="width: 50%;margin: auto;position: relative;
+    <ng-container *ngIf="cartItemList.length !==0">
+        <ion-card *ngFor="let row of cartItemList">
+            <img style="width: 50%;margin: auto;position: relative;
       left: 21%;" src="assets/images/foods/{{row.image}}" alt="food image" />
-      <ion-card-header>
-        <!-- <ion-card-subtitle>Destination</ion-card-subtitle> -->
-        <ion-card-title>{{row.title}}</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-       {{row.description}}
-      </ion-card-content>
-      <h2 class="sub-title"><sup>$</sup>{{ row.price }}</h2>
-      <div class="text-center">
-      
-      <ion-button (click)="removeItem(row.id)"color="danger">Remove</ion-button>
+            <ion-card-header>
+                <!-- <ion-card-subtitle>Destination</ion-card-subtitle> -->
+                <ion-card-title>{{row.title}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                {{row.description}}
+            </ion-card-content>
+            <h2 class="sub-title"><sup>$</sup>{{ row.totalprice }}</h2>
+            <h2>Quantity : {{row.quantity}}</h2>
+            <div class="text-center">
 
-    </div>
-    </ion-card>
-    <h4 class="text-center">Grand Total :${{total}}</h4>
-  </ng-container>
-  <ng-container>
-    <ion-button *ngIf="cartItemList.length > 0" (click)="checkOut()" color="primary">Check Out</ion-button>
+                <ion-button (click)="removeItem(row.id)" color="danger">Remove</ion-button>
 
-  </ng-container>
-  <ng-container *ngIf="cartItemList.length === 0">
-  <div class="center">
-    <img src="" alt="">
-    <h4>Your Cart is Empty!</h4>
-    <button class="btn btn-primary" routerLink="/home/listing"> Shop Now </button>
 
-  </div>
-</ng-container>
+
+            </div>
+        </ion-card>
+        <h4 class="text-center">Grand Total :${{total}}</h4>
+    </ng-container>
+    <ng-container>
+        <ion-button *ngIf="cartItemList.length > 0" (click)="checkOut()" color="primary">Check Out</ion-button>
+
+    </ng-container>
+    <ng-container *ngIf="cartItemList.length === 0">
+        <div class="center">
+            <img src="" alt="">
+            <h4>Your Cart is Empty!</h4>
+            <button class="btn btn-primary" routerLink="/listing"> Shop Now </button>
+
+        </div>
+    </ng-container>
 </ion-content>
 
 <!-- <ion-menu contentId="menu-content" menuId="menu-content" side="start" type="overlay">

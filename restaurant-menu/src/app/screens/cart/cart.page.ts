@@ -13,6 +13,7 @@ export class CartPage implements OnInit {
 
   public cartItemList: any = [];
   total:number=0;
+  quantity: number = 1;
   constructor(public toastController: ToastController,private cartService: CartService , private router:Router) { 
   
   }
@@ -29,8 +30,9 @@ ngOnInit() {
     this.cartService.getAllCartItems()
       .subscribe(res => {
         this.cartItemList = res;
+        this.total=0
         this.cartItemList.forEach((a:any) => {
-          this.total = a.price + this.total;
+          this.total = a.totalprice + this.total;
           
         });
         
@@ -45,6 +47,7 @@ ngOnInit() {
         this.getAllItems();
       })
   }
+ 
   async presentToast() {
     const toast = await this.toastController.create({
       message: 'Item Removed Successfully',

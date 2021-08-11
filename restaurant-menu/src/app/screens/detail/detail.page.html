@@ -1,34 +1,40 @@
 <ion-content>
-  <div class="header">
-    <ion-buttons>
-      <ion-button routerLink="/listing">
-        <ion-icon slot="icon-only" color='dark' name="arrow-back"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-
-  </div>
-
-  <!--food detail card-->
-  <div *ngIf="food" class="card">
-    <div class="image">
-      <ion-img [src]="'assets/images/foods/' + food.image"></ion-img>
+    <div class="header">
+        <ion-buttons>
+            <ion-button routerLink="/listing">
+                <ion-icon slot="icon-only" color='dark' name="arrow-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
 
     </div>
-    <div class="card-content">
-      <div class="card-title">
-        <h1 class="ion-no-margin">{{food?.title}}</h1>
-        <p class="ion-no-margin"><sup>$</sup>{{ food?.price}}</p>
-      </div>
-    </div>
-    <div class="Ingredients">
-      <h3>Ingredients:</h3>
-      <p>{{food?.description}}</p>
-    </div>
 
-    <ion-button (click)="addItemToCart()" color="primary">Add to Cart</ion-button>
+    <!--food detail card-->
+    <div *ngIf="foodList" class="card">
+        <div class="image">
+            <ion-img [src]="'assets/images/foods/' + foodList.image"></ion-img>
 
- 
-  </div>
+        </div>
+        <div class="card-content">
+            <div class="card-title">
+                <h1 class="ion-no-margin">{{foodList?.title}}</h1>
+                <p class="ion-no-margin"><sup>$</sup>{{ foodList?.price}}</p>
+            </div>
+        </div>
+        <div class="Ingredients">
+            <h3>Ingredients:</h3>
+            <p>{{foodList?.description}}</p>
+            <h4>Quantity : {{quantity}}</h4>
+        </div>
+
+        <ion-button (click)="addItemToCart()" color="primary">Add to Cart</ion-button>
+        <div class="d-flex text-center">
+            <ion-button *ngIf="quantity>1" (click)="decreaseQty(foodList.id)" color="danger">-</ion-button>
+            <ion-button (click)="increaseQty(foodList.id)" color="danger">+</ion-button>
+        </div>
+
+
+
+    </div>
 
 
 </ion-content>

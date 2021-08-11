@@ -5,4 +5,6 @@ export class Food {
     image:string;
     calories:number;
     description:string
+    quantity:number;
+    totalprice:number;
 }

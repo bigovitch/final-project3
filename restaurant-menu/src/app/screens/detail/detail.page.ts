@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { CartItem } from 'src/app/models/cart-item.model';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
-// import { ToastController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-detail',
@@ -15,23 +15,24 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class DetailPage implements OnInit {
 id:number;
-food:any;
+food:Food= new Food();
+foodList:any;
+quantity:number=1;
 // cartItem:CartItem[]= [];
-  constructor( private activatedRoute:ActivatedRoute ,private cartService : CartService, private foodService:FoodService , private router : Router) {
+  constructor(private activatedRoute:ActivatedRoute ,private cartService : CartService, private foodService:FoodService , private router : Router) {
     this.id  = Number(this.activatedRoute.snapshot.paramMap.get('id'));
   }
-  // async presentToast() {
-  //   const toast = await this.toastController.create({
-  //     message: 'Your settings have been saved.',
-  //     duration: 2000
-  //   });
-  //   toast.present();
-  // }
+
   ngOnInit() {  
     this.foodService.getFood(this.id)
      .subscribe(data=>{
-       this.food = data;
+       this.foodList = data;
+       console.log(this.foodList)
      });
+     
+  }
+  ionViewWillEnter(){
+   
   }
   addItemToCart(){
     // const  cartItem:CartItem = {
@@ -43,20 +44,29 @@ food:any;
     // image:this.food.image,
     // quantity:1,
     // };
-    let item ={
-      title : this.food.title,
-      price : this.food.price,
-      description : this.food.description,
-      image : this.food.image
-    }
-    
-    this.cartService.addToCart(item)
+   
+      this.food.title = this.foodList.title,
+      this.food.price = this.foodList.price,
+      this.food.description = this.foodList.description,
+      this.food.image = this.foodList.image,
+      this.food.quantity=this.quantity,
+      this.food.totalprice= this.foodList.price*this.quantity;
+    console.log(this.food)
+    this.cartService.addToCart(this.food)
     .subscribe(res=>{
       console.log(res)
       this.router.navigate(['cart']);
       
       
     })
+  }
+  increaseQty(id:number){
+    this.quantity++;
+    this.food.quantity = this.quantity;
+  }
+  decreaseQty(id:number){
+    this.quantity--;
+    this.food.quantity = this.quantity;
   }
 
 }

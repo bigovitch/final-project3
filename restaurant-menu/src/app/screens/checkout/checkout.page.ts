@@ -14,13 +14,11 @@ export class CheckoutPage implements OnInit {
   checkoutObj : checkOutModel = new checkOutModel();
   constructor( private formBuilder:FormBuilder) {
     console.log(window.history.state);
-
+    
    }
 
   ngOnInit() {
-    this.cartItemList = JSON.parse(localStorage.getItem("checkoutData"));
-    this.total = Number(localStorage.getItem("grandTotal"));
-    console.log(this.cartItemList);
+    
 
     this.userForm = this.formBuilder.group({
       email:[null,Validators.compose([Validators.required,Validators.email])],
@@ -29,8 +27,17 @@ export class CheckoutPage implements OnInit {
       city:[null,Validators.required]
     })
   }
+  ionViewWillEnter(){
+    this.cartItemList = JSON.parse(localStorage.getItem("checkoutData"));
+    this.total = Number(localStorage.getItem("grandTotal"));
+    console.log(this.cartItemList);
+  }
   placeOrder(){
     this.checkoutObj.total = this.total;
+    this.cartItemList.forEach((a:any)=>{
+      Object.assign(a,this.userForm.value);
+    })
+    console.log(this.cartItemList);
    
   }
 

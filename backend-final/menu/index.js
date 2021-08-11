@@ -8,25 +8,25 @@ const saltRounds = 10;
 const checkout = require('./models/checkout')
 const cart = require('./models/cart');
 const dishes = require('./models/dishes');
-const cors = require ('cors');
+const cors = require('cors');
 
 
-app.use(express.urlencoded({extended:false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
 
-config.authenticate().then(function(){
+config.authenticate().then(function() {
     console.log('database connected');
-}).catch(function(err){
+}).catch(function(err) {
     console.log(err);
 });
 // registration and login
-app.post('/register', function(req, res){
+app.post('/register', function(req, res) {
 
     let plainPassword = req.body.password;
 
     bcrypt.hash(plainPassword, saltRounds, function(err, hash) {
-        
+
         let user_data = {
             first_name: req.body.first_name,
             last_name: req.body.last_name,
@@ -40,93 +40,94 @@ app.post('/register', function(req, res){
             res.status(500).send(err);
         });
 
-    });    
+    });
 });
 
-app.post('/login', function(req, res){
+app.post('/login', function(req, res) {
 
     let email = req.body.email;
     let password = req.body.password;
     let user_data = {
-        where: {email} // {email: email}
+        where: { email } // {email: email}
     }
 
     //Find a user that corresponds to the email
     User.findOne(user_data).then((result) => {
 
-        if(result){
+        if (result) {
             console.log(result);
             bcrypt.compare(password, result.password, function(err, output) {
                 console.log(output);
-                if(output){
+                if (output) {
                     res.status(200).send(result);
-                }else{
+                } else {
                     res.status(400).send('Incorrect password.');
                 }
-            });            
-        }
-        else{
+            });
+        } else {
             res.status(404).send('User does not exist.');
         }
     }).catch((err) => {
         res.status(500).send(err);
     });
-        
+
 });
 
 // manage dishes
 
-app.get('/' , function(req , res) {
-    dishes.findAll().then(function(result){
+app.get('/', function(req, res) {
+    dishes.findAll().then(function(result) {
         res.send(result)
-    }).catch(function(err){
+    }).catch(function(err) {
         res.status(400).send(err);
     });
 });
-app.get('/id/:id' , function(req , res) {
-    dishes.findByPk((req.params.id)).then(function(result){
+app.get('/id/:id', function(req, res) {
+    dishes.findByPk((req.params.id)).then(function(result) {
         res.send(result)
-    }).catch(function(err){
+    }).catch(function(err) {
         res.status(400).send(err);
     });
 });
 
-app.post('/addDish', function (req, res) {
+app.post('/addDish', function(req, res) {
     let data = {
         title: req.body.title,
         price: req.body.price,
         description: req.body.description,
         calories: req.body.calories,
-        image:req.body.image
-        
+        image: req.body.image
+
     };
-    dishes.create(data).then(function (result) {
+    dishes.create(data).then(function(result) {
         res.redirect('/');
 
-    }).catch(function (err) {
+    }).catch(function(err) {
         res.status(400).send(err);
     });
 });
-app.get('/allItems' , function(req , res) {
-    cart.findAll().then(function(result){
+app.get('/allItems', function(req, res) {
+    cart.findAll().then(function(result) {
         res.send(result)
-    }).catch(function(err){
+    }).catch(function(err) {
         res.status(400).send(err);
     });
 });
 
-app.post('/addToCart', function (req, res) {
+app.post('/addToCart', function(req, res) {
     let data = {
         title: req.body.title,
         price: req.body.price,
         description: req.body.description,
-        image:req.body.image
-        
+        image: req.body.image,
+        quantity: req.body.quantity,
+        totalprice: req.body.totalprice
+
     };
-    cart.create(data).then(function (result) {
+    cart.create(data).then(function(result) {
         res.status(200).send(result)
 
-    }).catch(function (err) {
+    }).catch(function(err) {
         res.status(400).send(err);
     });
 });
@@ -197,36 +198,36 @@ app.delete("/dishes/delete/id/:id", (req, res) => {
         res.status(500).send("Could not delete dish");
     });
 });
-app.post('/checkout', function (req, res) {
+app.post('/checkout', function(req, res) {
     let data = {
         title: req.body.title,
         price: req.body.price,
         quantity: req.body.quantity,
         total: req.body.total,
         description: req.body.description,
-        image:req.body.image,
-        name:req.body.name,
-        email:req.body.email,
-        address:req.body.address,
-        city:req.body.city
-        
+        image: req.body.image,
+        name: req.body.name,
+        email: req.body.email,
+        address: req.body.address,
+        city: req.body.city
+
 
     };
-    checkout.create(data).then(function (result) {
+    checkout.create(data).then(function(result) {
         res.status(200).send(result)
 
-    }).catch(function (err) {
+    }).catch(function(err) {
         res.status(400).send(err);
     });
 });
-app.get('/checkout/orders' , function(req , res) {
-    checkout.findAll().then(function(result){
+app.get('/checkout/orders', function(req, res) {
+    checkout.findAll().then(function(result) {
         res.send(result)
-    }).catch(function(err){
+    }).catch(function(err) {
         res.status(400).send(err);
     });
 });
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT , console.log(` Server started on port ${PORT}`));
+app.listen(PORT, console.log(` Server started on port ${PORT}`));
