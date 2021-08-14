@@ -35,11 +35,13 @@
 
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
+    canActivate:[AuthGuard]
   },
   {
     path: '',
@@ -48,7 +50,8 @@ const routes: Routes = [
   },
   {
     path: 'detail/:id',
-    loadChildren: () => import('./screens/detail/detail.module').then( m => m.DetailPageModule)
+    loadChildren: () => import('./screens/detail/detail.module').then( m => m.DetailPageModule),
+    canActivate:[AuthGuard]
   },
  
   {
@@ -58,11 +61,13 @@ const routes: Routes = [
   
   {
     path: 'cart',
-    loadChildren: () => import('./screens/cart/cart.module').then( m => m.CartPageModule)
+    loadChildren: () => import('./screens/cart/cart.module').then( m => m.CartPageModule),
+    canActivate:[AuthGuard]
   },
   {
     path: 'home/dash-board',
-    loadChildren: () => import('./screens/dash-board/dash-board.module').then( m => m.DashBoardPageModule)
+    loadChildren: () => import('./screens/dash-board/dash-board.module').then( m => m.DashBoardPageModule),
+    canActivate:[AuthGuard]
   },
   {
     path: 'login',
@@ -74,7 +79,8 @@ const routes: Routes = [
   },
   {
     path: 'checkout',
-    loadChildren: () => import('./screens/checkout/checkout.module').then( m => m.CheckoutPageModule)
+    loadChildren: () => import('./screens/checkout/checkout.module').then( m => m.CheckoutPageModule),
+    canActivate:[AuthGuard]
   },
  
 ];

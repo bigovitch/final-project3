@@ -14,7 +14,7 @@
 
         .title{
          font-weight: 600;
-         font-size: 17px;
+         font-size: 25px;
          margin-bottom: 4px;
          color: black;
 
@@ -22,7 +22,7 @@
         .sub-title{
             font-size: 20px;
             font-weight: 600;
-            color: #070c01;
+            color: #2437a1;
             margin-top: 10px;
             sup{
                 font-size: 18px;
@@ -36,14 +36,14 @@
         // bottom: -16px;
         transform:translateX(-50%);
 
-        ion-button{
-            background: rgb(28, 109, 185);
-            font-weight: 700;
-            color:#fff;
-            width:40px;
-            height:40px;
+        // ion-button{
+        //     background: rgb(28, 109, 185);
+        //     font-weight: 700;
+        //     color:#fff;
+        //     width:40px;
+        //     height:40px;
             
-        }
+        // }
         
         }
     }

@@ -59,7 +59,10 @@ ngOnInit() {
 checkOut(){
   this.router.navigate(['checkout'],{state:this.cartItemList});
   localStorage.setItem("checkoutData", JSON.stringify(this.cartItemList));
-  localStorage.setItem("grandTotal" , this.total.toString())
+  localStorage.setItem("grandTotal" , this.total.toString());
+  this.cartItemList.forEach((a:any) => {
+    this.removeItem(a.id);
+  });
 }
 }
 

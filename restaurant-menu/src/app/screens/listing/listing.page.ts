@@ -17,7 +17,7 @@ foods:Food[] = [];
    }
 
   ngOnInit() {
-    this.getCategories();
+    // this.getCategories();
     // console.log('listing page');
      this.foodService.getFoods()
      .subscribe(res=>{
@@ -28,42 +28,44 @@ foods:Food[] = [];
      })
 
   }
-getCategories(){
-  this.categories = [
-    {
-      id:1,
-      label:'All',
-      image:'assets/images/icons/all.png',
-      active:true,
-    },
-    {
-      id:2,
-      label:'Burgers',
-      image:'assets/images/icons/burger.png',
-      active:false,
-    },
-    {
-      id:3,
-      label:'Dishes',
-      image:'assets/images/icons/dish.png',
-      active:false,
-    },
-    {
-      id:4,
-      label:'Sushi',
-      image:'assets/images/icons/sushi.png',
-      active:false,
-    },
-    {
-      id:5,
-      label:'Pizza',
-      image:'assets/images/icons/pizza.png',
-      active:false,
-    },
-  ]
-}
-goToDetailPage(id:number){
-this.router.navigate(['detail' , id]);
-
-}
-}
+  goToDetailPage(id:number){
+    localStorage.setItem('productId',id.toString())
+    this.router.navigate(['detail' , id]);
+    
+    }
+    }
+    
+// getCategories(){
+//   this.categories = [
+//     {
+//       id:1,
+//       label:'All',
+//       image:'assets/images/icons/all.png',
+//       active:true,
+//     },
+//     {
+//       id:2,
+//       label:'Burgers',
+//       image:'assets/images/icons/burger.png',
+//       active:false,
+//     },
+//     {
+//       id:3,
+//       label:'Dishes',
+//       image:'assets/images/icons/dish.png',
+//       active:false,
+//     },
+//     {
+//       id:4,
+//       label:'Sushi',
+//       image:'assets/images/icons/sushi.png',
+//       active:false,
+//     },
+//     {
+//       id:5,
+//       label:'Pizza',
+//       image:'assets/images/icons/pizza.png',
+//       active:false,
+//     },
+//   ]
+// }

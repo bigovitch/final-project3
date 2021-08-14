@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Food } from 'src/app/models/food.model';
 import { FoodService } from 'src/app/services/food.service';
 
@@ -13,7 +14,7 @@ export class DashBoardPage implements OnInit {
   foodObj: Food = new Food();
   display: boolean;
   formValue: FormGroup;
-  constructor(private formBuilder: FormBuilder, private foodService: FoodService) { }
+  constructor(private formBuilder: FormBuilder, private foodService: FoodService , private router:Router) { }
 
   ngOnInit() {
     this.formValue = this.formBuilder.group({
@@ -73,5 +74,10 @@ export class DashBoardPage implements OnInit {
         this.display = false;
       })
 
+  }
+  logout(){
+    alert('are you sure you want to sign out of this page ?')
+    this.router.navigate(['listing']);
+    localStorage.clear();
   }
 }

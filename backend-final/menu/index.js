@@ -8,6 +8,7 @@ const saltRounds = 10;
 const checkout = require('./models/checkout')
 const cart = require('./models/cart');
 const dishes = require('./models/dishes');
+const placeorder = require('./models/placeorder');
 const cors = require('cors');
 
 
@@ -223,6 +224,28 @@ app.post('/checkout', function(req, res) {
 app.get('/checkout/orders', function(req, res) {
     checkout.findAll().then(function(result) {
         res.send(result)
+    }).catch(function(err) {
+        res.status(400).send(err);
+    });
+});
+app.post('/placeorder', function(req, res) {
+    let data = {
+        title: req.body.title,
+        price: req.body.price,
+        description: req.body.description,
+        image: req.body.image,
+        quantity: req.body.quantity,
+        
+        totalprice: req.body.totalprice,
+        email: req.body.email,
+        address: req.body.address,
+        fullName: req.body.fullName,
+        city: req.body.city,
+
+    };
+    placeorder.create(data).then(function(result) {
+        res.status(200).send(result)
+
     }).catch(function(err) {
         res.status(400).send(err);
     });

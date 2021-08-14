@@ -15,4 +15,14 @@ export class UserService {
   register(registerObj:User){
     return this.http.post('http://localhost:5000/register', registerObj);
   }
+  
+  isAuthenticated(){
+    //return !!localStorage.getItem('token');
+    let data = localStorage.getItem('token');
+    if(data!=null || data != ""){
+      return true;
+    }else{
+      return false;
+    }
+  }
 }

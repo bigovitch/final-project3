@@ -28,8 +28,12 @@ let loginObj = this.loginForm.value;
 
 this.userService.login(loginObj).subscribe(res=>{
   this.loggedInUser = res;
+  localStorage.setItem('token','thisisverysecretand works as a token');
+  // let token = res.token
   alert(this.loggedInUser.email +" has logged In");
  this.router.navigate(['home/dash-board'])
+} , err=>{
+  alert('incorrect username or password')
 })
   }
   

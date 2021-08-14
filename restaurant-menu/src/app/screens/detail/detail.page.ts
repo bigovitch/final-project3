@@ -20,7 +20,7 @@ foodList:any;
 quantity:number=1;
 // cartItem:CartItem[]= [];
   constructor(private activatedRoute:ActivatedRoute ,private cartService : CartService, private foodService:FoodService , private router : Router) {
-    this.id  = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+    this.id  = Number(localStorage.getItem('productId'));
   }
 
   ngOnInit() {  
