@@ -33,20 +33,12 @@
             <input type="text" class="form-control" formControlName="city" id="inputCity">
         </div>
         <div class="col-md-4">
-            <!-- <label for="inputState" class="form-label">Quantity</label>
-      <select id="inputState" class="form-select">
-        <option selected>Choose...</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-
-      </select> -->
+       
         </div>
     </form>
 
     <ion-card *ngFor="let row of cartItemList">
-        <img style="width: 50%;margin: auto;position: relative;
-      left: 21%;" src="assets/images/foods/{{row.image}}" alt="food image" />
+        <img  src="assets/images/foods/{{row.image}}" alt="food image" />
         <ion-card-header>
             <!-- <ion-card-subtitle>Destination</ion-card-subtitle> -->
             <ion-card-title>{{row.title}}</ion-card-title>

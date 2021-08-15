@@ -10,15 +10,13 @@ import { FoodService } from 'src/app/services/food.service';
   styleUrls: ['./listing.page.scss'],
 })
 export class ListingPage implements OnInit {
-categories:Category[] = [];
+// categories:Category[] = [];
 foods:Food[] = [];
   constructor(private foodService:FoodService , private router:Router) {
-    // console.log('dddd');
    }
 
   ngOnInit() {
-    // this.getCategories();
-    // console.log('listing page');
+    
      this.foodService.getFoods()
      .subscribe(res=>{
        this.foods = res;

@@ -32,32 +32,20 @@ quantity:number=1;
      
   }
   ionViewWillEnter(){
-   
   }
   addItemToCart(){
-    // const  cartItem:CartItem = {
-    // id:this.food.id ,
-    // title:this.food.title,
-    // price:this.food.price,
-    // description:this.food.description,
-    // calories:this.food.calories,
-    // image:this.food.image,
-    // quantity:1,
-    // };
-   
+    
       this.food.title = this.foodList.title,
       this.food.price = this.foodList.price,
       this.food.description = this.foodList.description,
       this.food.image = this.foodList.image,
       this.food.quantity=this.quantity,
       this.food.totalprice= this.foodList.price*this.quantity;
-    console.log(this.food)
-    this.cartService.addToCart(this.food)
+    console.log(this.foodList)
+    this.cartService.addToCart(this.foodList)
     .subscribe(res=>{
       console.log(res)
       this.router.navigate(['cart']);
-      
-      
     })
   }
   increaseQty(id:number){

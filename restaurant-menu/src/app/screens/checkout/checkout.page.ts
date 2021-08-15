@@ -20,12 +20,10 @@ export class CheckoutPage implements OnInit {
   checkoutObj : checkOutModel = new checkOutModel();
   constructor( private formBuilder:FormBuilder , private placeOrders:PlaceOrderService , private router:Router) {
     console.log(window.history.state);
-    
    }
 
   ngOnInit() {
     
-
     this.userForm = this.formBuilder.group({
       email:[null,Validators.compose([Validators.required,Validators.email])],
       fullName:[null, Validators.required],
@@ -45,6 +43,7 @@ export class CheckoutPage implements OnInit {
       Object.assign(a,this.userForm.value);
     })
     console.log(this.cartItemList)
+    // 
     this.cartItemList.forEach((b:any )=> {
       this.placeOrders.postOrder(b)
       .subscribe(res=>{
@@ -55,7 +54,5 @@ export class CheckoutPage implements OnInit {
       })
     });
     this.router.navigate(['listing'])
-
   }
-
 }

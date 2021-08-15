@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
@@ -33,7 +33,6 @@ ngOnInit() {
         this.total=0
         this.cartItemList.forEach((a:any) => {
           this.total = a.totalprice + this.total;
-          
         });
         
         console.log(this.total);
@@ -43,7 +42,6 @@ ngOnInit() {
   removeItem(id: number) {
     this.cartService.removeItem(id)
       .subscribe(res => {
-       
         this.getAllItems();
       })
   }
@@ -57,7 +55,8 @@ ngOnInit() {
   }
 
 checkOut(){
-  this.router.navigate(['checkout'],{state:this.cartItemList});
+  this.router.navigate(['checkout']);
+  // ,{state:this.cartItemList});
   localStorage.setItem("checkoutData", JSON.stringify(this.cartItemList));
   localStorage.setItem("grandTotal" , this.total.toString());
   this.cartItemList.forEach((a:any) => {

@@ -19,10 +19,10 @@ export class UserService {
   isAuthenticated(){
     //return !!localStorage.getItem('token');
     let data = localStorage.getItem('token');
-    if(data!=null || data != ""){
-      return true;
-    }else{
+    if(data==null || data == ""){
       return false;
+    }else{
+      return true;
     }
   }
 }

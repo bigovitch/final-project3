@@ -50,6 +50,7 @@ export class DashBoardPage implements OnInit {
       })
   }
   onEdit(row: any) {
+    console.log(row);
     this.display = true;
     this.foodObj.id = row.id;
     this.formValue.controls['title'].setValue(row.title);
