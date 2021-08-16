@@ -10,6 +10,6 @@ export class FoodCardComponent  {
 
   @Input() item:Food;
 
-  @Output() clicked = new EventEmitter();
+  // @Output() clicked = new EventEmitter();
 
 }

@@ -22,7 +22,6 @@ ngOnInit() {
   
   }
   ionViewWillEnter(){
-    console.log('hello')
     this.getAllItems();
 
   }
@@ -34,15 +33,13 @@ ngOnInit() {
         this.cartItemList.forEach((a:any) => {
           this.total = a.totalprice + this.total;
         });
-        
-        console.log(this.total);
-        console.log(this.cartItemList);
       });
   }
   removeItem(id: number) {
     this.cartService.removeItem(id)
       .subscribe(res => {
         this.getAllItems();
+        
       })
   }
  
@@ -56,7 +53,6 @@ ngOnInit() {
 
 checkOut(){
   this.router.navigate(['checkout']);
-  // ,{state:this.cartItemList});
   localStorage.setItem("checkoutData", JSON.stringify(this.cartItemList));
   localStorage.setItem("grandTotal" , this.total.toString());
   this.cartItemList.forEach((a:any) => {

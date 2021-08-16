@@ -28,8 +28,8 @@
 
         <ion-button (click)="addItemToCart()" color="primary">Add to Cart</ion-button>
         <div class="d-flex text-center">
-            <ion-button *ngIf="quantity>1" (click)="decreaseQty(foodList.id)" color="danger">-</ion-button>
-            <ion-button (click)="increaseQty(foodList.id)" color="danger">+</ion-button>
+            <ion-button *ngIf="quantity>1" (click)="decreaseQty()" color="danger">-</ion-button>
+            <ion-button (click)="increaseQty()" color="danger">+</ion-button>
         </div>
     </div>
 </ion-content>

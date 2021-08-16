@@ -13,9 +13,7 @@
 
     </div>
 </ion-header>
-
 <ion-content>
-
     <ng-container *ngIf="cartItemList.length !==0">
         <ion-card *ngFor="let row of cartItemList">
             <img  src="assets/images/foods/{{row.image}}" alt="food image" />
@@ -30,8 +28,6 @@
             <div class="text-center">
 
                 <ion-button (click)="removeItem(row.id)" color="danger">Remove</ion-button>
-
-
 
             </div>
         </ion-card>

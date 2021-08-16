@@ -17,19 +17,19 @@ const routes: Routes = [
   {
     path: 'detail/:id',
     loadChildren: () => import('./screens/detail/detail.module').then( m => m.DetailPageModule),
-    canActivate:[AuthGuard]
+    // canActivate:[AuthGuard]
   },
  
   {
     path: 'listing',
     loadChildren: () => import('./screens/listing/listing.module').then( m => m.ListingPageModule),
-    canActivate:[AuthGuard]
+    // canActivate:[AuthGuard]
   },
   
   {
     path: 'cart',
     loadChildren: () => import('./screens/cart/cart.module').then( m => m.CartPageModule),
-    canActivate:[AuthGuard]
+  
   },
   {
     path: 'home/dash-board',
@@ -47,7 +47,7 @@ const routes: Routes = [
   {
     path: 'checkout',
     loadChildren: () => import('./screens/checkout/checkout.module').then( m => m.CheckoutPageModule),
-    canActivate:[AuthGuard]
+    
   },
  
 ];

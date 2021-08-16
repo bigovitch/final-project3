@@ -10,7 +10,7 @@ import { FoodService } from 'src/app/services/food.service';
   styleUrls: ['./listing.page.scss'],
 })
 export class ListingPage implements OnInit {
-// categories:Category[] = [];
+
 foods:Food[] = [];
   constructor(private foodService:FoodService , private router:Router) {
    }
@@ -33,37 +33,4 @@ foods:Food[] = [];
     }
     }
     
-// getCategories(){
-//   this.categories = [
-//     {
-//       id:1,
-//       label:'All',
-//       image:'assets/images/icons/all.png',
-//       active:true,
-//     },
-//     {
-//       id:2,
-//       label:'Burgers',
-//       image:'assets/images/icons/burger.png',
-//       active:false,
-//     },
-//     {
-//       id:3,
-//       label:'Dishes',
-//       image:'assets/images/icons/dish.png',
-//       active:false,
-//     },
-//     {
-//       id:4,
-//       label:'Sushi',
-//       image:'assets/images/icons/sushi.png',
-//       active:false,
-//     },
-//     {
-//       id:5,
-//       label:'Pizza',
-//       image:'assets/images/icons/pizza.png',
-//       active:false,
-//     },
-//   ]
-// }
+

@@ -19,7 +19,6 @@ export class CheckoutPage implements OnInit {
 
   checkoutObj : checkOutModel = new checkOutModel();
   constructor( private formBuilder:FormBuilder , private placeOrders:PlaceOrderService , private router:Router) {
-    console.log(window.history.state);
    }
 
   ngOnInit() {

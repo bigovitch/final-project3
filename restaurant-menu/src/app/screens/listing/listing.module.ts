@@ -10,7 +10,6 @@ import { ListingPage } from './listing.page';
 import { SearchbarModule } from 'src/app/components/searchbar/searchbar.module';
 import { CategoryItemModule } from 'src/app/components/category-item/category-item.module';
 import {  FoodCardModule } from 'src/app/components/food-card/food-card.module';
-import { DishesDashboardModule } from 'src/app/components/dishes-dashboard/dishes-dashboard.module';
 
 
 @NgModule({
@@ -22,7 +21,7 @@ import { DishesDashboardModule } from 'src/app/components/dishes-dashboard/dishe
     SearchbarModule,
     CategoryItemModule,
     FoodCardModule,
-    DishesDashboardModule,
+  
 
   ],
   declarations: [ListingPage]

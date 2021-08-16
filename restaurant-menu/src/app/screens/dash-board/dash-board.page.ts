@@ -14,6 +14,8 @@ export class DashBoardPage implements OnInit {
   foodObj: Food = new Food();
   display: boolean;
   formValue: FormGroup;
+  showAdd : boolean;
+  showUpdate : boolean;
   constructor(private formBuilder: FormBuilder, private foodService: FoodService , private router:Router) { }
 
   ngOnInit() {
@@ -25,7 +27,13 @@ export class DashBoardPage implements OnInit {
     });
     this.getAllDishes();
   }
+  openDialog(){
+    this.display = true;
+    this.showAdd = true;
+    this.showUpdate = false;
+  }
   addDish() {
+    
     this.foodService.postDish(this.formValue.value).subscribe(res => {
       console.log(res)
       alert('dishes Added')
@@ -50,7 +58,8 @@ export class DashBoardPage implements OnInit {
       })
   }
   onEdit(row: any) {
-    console.log(row);
+    this.showAdd = false;
+    this.showUpdate = true;
     this.display = true;
     this.foodObj.id = row.id;
     this.formValue.controls['title'].setValue(row.title);

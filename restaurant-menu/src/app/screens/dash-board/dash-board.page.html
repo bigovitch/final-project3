@@ -5,7 +5,7 @@
               <ion-title>DashBoard</ion-title>
           </div>
           <div>
-              <ion-button (click)="display = true" color="success">Add Dish</ion-button>
+              <ion-button (click)="openDialog()" color="success">Add Dish</ion-button>
               <ion-button (click)="logout()" color="danger">Log Out</ion-button>
           </div>
       </div>
@@ -33,10 +33,9 @@
     </ion-card>
   </ng-container>
   
- 
 </ion-content>
 
-<p-dialog [(visible)]="display">
+<p-dialog [(visible)] ="display">
   <ng-template pTemplate="header">
       <h2> Add Dish</h2>
   </ng-template>
@@ -60,7 +59,7 @@
 
   </form>
   <p-footer>
-      <ion-button color="primary" (click)="addDish()">Add</ion-button>
-      <ion-button color="danger" (click)="updateDish()">Update</ion-button>
+      <ion-button color="primary" *ngIf="showAdd" (click)="addDish()">Add</ion-button>
+      <ion-button color="danger" *ngIf="showUpdate" (click)="updateDish()">Update</ion-button>
   </p-footer>
 </p-dialog>
